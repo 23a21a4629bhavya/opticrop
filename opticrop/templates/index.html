@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OptiCrop - Crop Recommendation</title>
+    <style>
+        body { font-family: Arial; background: #e8f5e9; text-align: center; padding: 50px; }
+       .container { background: white; padding: 30px; border-radius: 10px; width: 400px; margin: auto; box-shadow: 0 0 10px #ccc; }
+        input { width: 90%; padding: 8px; margin: 5px; border: 1px solid #ccc; border-radius: 5px; }
+        button { background: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
+        h1 { color: #2e7d32; }
+       .result { margin-top: 20px; font-size: 20px; color: #d32f2f; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌱 OptiCrop</h1>
+        <p>Enter Soil and Weather Data</p>
+        <form action="/predict" method="POST">
+            <input type="text" name="N" placeholder="Nitrogen (N)" required><br>
+            <input type="text" name="P" placeholder="Phosphorus (P)" required><br>
+            <input type="text" name="K" placeholder="Potassium (K)" required><br>
+            <input type="text" name="temperature" placeholder="Temperature" required><br>
+            <input type="text" name="humidity" placeholder="Humidity" required><br>
+            <input type="text" name="ph" placeholder="pH" required><br>
+            <input type="text" name="rainfall" placeholder="Rainfall" required><br><br>
+            <button type="submit">Get Crop Recommendation</button>
+        </form>
+        {% if result %}
+        <div class="result">
+            Recommended Crop: {{ result }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
